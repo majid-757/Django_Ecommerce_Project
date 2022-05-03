@@ -9,3 +9,8 @@ class HomeView(View):
 
 
 
+def loginView(request):
+    if request.method == 'POST':
+        form = FormLogin(request.POST)
+        form.save()
+        
