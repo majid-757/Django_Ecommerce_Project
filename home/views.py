@@ -14,3 +14,10 @@ def loginView(request):
         form = FormLogin(request.POST)
         form.save()
         
+    else:
+
+        form = FormLogin()  
+
+    return render(request, 'home/login.html', {'form': form})
+
+
