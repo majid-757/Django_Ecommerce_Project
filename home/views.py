@@ -9,15 +9,15 @@ from django.views import View
 
 
 
-def loginView(request):
-    if request.method == 'POST':
-        form = FormLogin(request.POST)
-        form.save()
+# def loginView(request):
+#     if request.method == 'POST':
+#         form = FormLogin(request.POST)
+#         form.save()
         
-    else:
+#     else:
 
-        form = FormLogin()  
+#         form = FormLogin()  
 
-    return render(request, 'home/login.html', {'form': form})
+#     return render(request, 'home/login.html', {'form': form})
 
 
