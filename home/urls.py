@@ -1,14 +1,14 @@
-# from django.urls import path
+from django.urls import path
 
-# from . import views 
+from . import views 
 
 
-# app_name = 'home'
+app_name = 'home'
 
-# urlpatterns = [
-#     path('', views.HomeView.as_view(), name='home'),
+urlpatterns = [
+    path('', views.HomeView.as_view(), name='home'),
 
-# ]
+]
 
 
 
