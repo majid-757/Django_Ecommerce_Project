@@ -5,8 +5,8 @@ from django.contrib import messages
 
 
 
-from .models import OtpCode
-from .forms import UserRegistrationForm
+from .models import OtpCode, User
+from .forms import UserRegistrationForm, VerifyCodeForm
 from utils import send_top_code
 
 
@@ -41,20 +41,32 @@ class UserRegisterView(View):
 
 
 class UserRegisterVerifyCodeView(View):
-    def get(self, request):
-        user_session = request.session['user_registration_info']
-        print(user_session)
+    form_class = VerifyCodeForm
 
+    def get(self, request):
+        form = self.form_class
+        return render(request, 'accounts/verify.html', {'form': form})
 
 
     def post(self, request):
-        pass
+        user_session = request.session['user_registration_info']
+        code_instance = OtpCode.objects.get(phone_number=user_session['phone_number'])
 
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            if cd['code'] == code_instance.code:
+                User.objects.create_user(user_session['phone_number'], user_session['email'],
+                                        user_session['full_name'], user_session['password'])
 
+                code_instance.delete()
+                messages.success(request, 'you registered.', 'success')
+                return redirect('home:home')
+            else:
+                messages.error(request, 'this code is wronge', 'danger')
+                return redirect('accounts:verify_code')
 
-
-
-
+        return redirect('home:home')
 
 
 
