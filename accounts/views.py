@@ -11,7 +11,7 @@ from utils import send_top_code
 
 
 class UserRegisterView(View):
-    form_class = UserRegistrationForm()
+    form_class = UserRegistrationForm
 
     def get(self, request):
         form = self.form_class
@@ -42,8 +42,8 @@ class UserRegisterView(View):
 
 class UserRegisterVerifyCodeView(View):
     def get(self, request):
-        pass
-
+        user_session = request.session['user_registration_info']
+        print(user_session)
 
 
 
