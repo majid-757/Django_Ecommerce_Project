@@ -7,7 +7,7 @@ from django.contrib import messages
 
 from .models import OtpCode, User
 from .forms import UserRegistrationForm, VerifyCodeForm
-from utils import send_top_code
+from utils import send_otp_code
 
 
 class UserRegisterView(View):
