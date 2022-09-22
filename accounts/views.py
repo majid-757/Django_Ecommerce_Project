@@ -37,7 +37,7 @@ class UserRegisterView(View):
 
         return render(request, self.template_name, {'form': form})
 
-
+        
 
 
 class UserRegisterVerifyCodeView(View):
