@@ -1,23 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
+
+
+from .models import Product
+
 
 
 
 class HomeView(View):
     def get(self, request):
-        return render(request, 'home/home.html')
+        products = Product.objects.filter(availabele=True)
+        return render(request, 'home/home.html', {'products': products})
 
 
 
-# def loginView(request):
-#     if request.method == 'POST':
-#         form = FormLogin(request.POST)
-#         form.save()
+
+
+class ProductDetailView(View):
+    def get(self, request, slug):
+
         
-#     else:
-
-#         form = FormLogin()  
-
-#     return render(request, 'home/login.html', {'form': form})
-
 
