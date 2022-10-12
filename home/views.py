@@ -24,7 +24,8 @@ class ProductDetailView(View):
 
 
 
-
+class ProductDetailView(View):
+    pass
 
 
 
