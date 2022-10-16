@@ -24,8 +24,9 @@ class ProductDetailView(View):
 
 
 
-class ProductDetailView(View):
-    pass
+class BucketHome(View):
+    def get(self, request):
+        pass
 
 
 
