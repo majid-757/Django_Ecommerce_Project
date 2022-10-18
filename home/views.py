@@ -25,8 +25,10 @@ class ProductDetailView(View):
 
 
 class BucketHome(View):
+    template_name = 'home/bucket.html'
+
     def get(self, request):
-        pass
+        return render(request, self.template_name)
 
 
 
