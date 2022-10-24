@@ -21,5 +21,7 @@ class Bucket:
 
 
 
-
+    def get_objects(self):
+        result = self.conn.list_objects_v2(Bucket=settings.AWS_STORAGE_BUCKET_NAME)
+        return result
 
