@@ -15,12 +15,15 @@
       </tr>
     </thead>
     <tbody>
+      {% for obj in objects %}
+
       <tr>
         <th scope="row">1</th>
-        <td>Mark</td>
+        <td>{{ obj.key }}</td>
         <td>Otto</td>
         <td>@mdo</td>
       </tr>
+      {% endfor %}
       <tr>
         <th scope="row">2</th>
         <td>Jacob</td>
